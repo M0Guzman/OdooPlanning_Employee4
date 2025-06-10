@@ -1,0 +1,44 @@
+<!-- planning_slot_search_views.xml -->
+<record id="view_planning_slot_search_multi_employee" model="ir.ui.view">
+    <field name="name">planning.slot.search.multi.employee</field>
+    <field name="model">planning.slot</field>
+    <field name="inherit_id" ref="planning.planning_slot_view_search"/>
+    <field name="arch" type="xml">
+        <!-- Ajouter le champ de recherche pour les employés multiples -->
+        <xpath expr="//field[@name='resource_id']" position="after">
+            <field name="multi_employee_ids" string="Employés" filter_domain="[('multi_employee_ids', 'ilike', self)]"/>
+        </xpath>
+        
+        <!-- Ajouter des filtres pour les employés -->
+        <xpath expr="//filter[@name='resource_id']" position="after">
+            <filter name="group_by_multi_employees" string="Par Employés" 
+                    context="{'group_by': 'multi_employee_ids'}"/>
+        </xpath>
+        
+        <!-- Ajouter un filtre pour les créneaux avec plusieurs employés -->
+        <xpath expr="//filter[@name='resource_id']" position="before">
+            <filter name="multi_employee_slots" string="Créneaux Multi-Employés" 
+                    domain="[('multi_employee_ids', '!=', False)]"/>
+            <separator/>
+        </xpath>
+    </field>
+</record>
+
+<!-- Vue de recherche pour les templates -->
+<record id="view_planning_slot_template_search_multi_employee" model="ir.ui.view">
+    <field name="name">planning.slot.template.search.multi.employee</field>
+    <field name="model">planning.slot.template</field>
+    <field name="inherit_id" ref="planning.view_planning_slot_template_search"/>
+    <field name="arch" type="xml">
+        <!-- Ajouter le champ de recherche pour les employés multiples dans les templates -->
+        <xpath expr="//field[@name='resource_id']" position="after">
+            <field name="multi_employee_ids" string="Employés" filter_domain="[('multi_employee_ids', 'ilike', self)]"/>
+        </xpath>
+        
+        <!-- Ajouter des filtres pour les employés dans les templates -->
+        <xpath expr="//filter[@name='resource_id']" position="after">
+            <filter name="group_by_multi_employees" string="Par Employés" 
+                    context="{'group_by': 'multi_employee_ids'}"/>
+        </xpath>
+    </field>
+</record>
