@@ -1,0 +1,9 @@
+<record id="view_planning_slot_template_search_patch" model="ir.ui.view">
+    <field name="name">planning.slot.template.search.patch</field>
+    <field name="model">planning.slot.template</field>
+    <field name="inherit_id" ref="planning.view_planning_slot_template_search"/>
+    <field name="arch" type="xml">
+        <xpath expr="//filter[@name='employee_skill_ids']" position="remove"/>
+        <xpath expr="//field[@name='employee_skill_ids']" position="remove"/>
+    </field>
+</record>
