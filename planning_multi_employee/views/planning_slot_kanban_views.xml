@@ -8,5 +8,6 @@
                 <span class="badge badge-primary me-1" t-esc="employee.display_name"/>
             </t>
         </xpath>
+        <xpath expr="//field[@name='employee_skill_ids']" positio="remove"/>
     </field>
 </record>
