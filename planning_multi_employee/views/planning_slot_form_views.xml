@@ -1,0 +1,13 @@
+<record id="view_planning_slot_form_multi_employee" model="ir.ui.view">
+    <field name="name">planning.slot.form.multi.employee</field>
+    <field name="model">planning.slot</field>
+    <field name="inherit_id" ref="planning.planning_slot_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='resource_id']" position="replace">
+            <field name="multi_employee_ids"
+                   widget="many2many_tags"
+                   options="{'no_create_edit': True}"
+                   placeholder="Assign Employees"/>
+        </xpath>
+    </field>
+</record>

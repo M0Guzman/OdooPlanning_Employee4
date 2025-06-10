@@ -1,0 +1,12 @@
+<record id="view_planning_slot_kanban_multi_employee" model="ir.ui.view">
+    <field name="name">planning.slot.kanban.multi.employee</field>
+    <field name="model">planning.slot</field>
+    <field name="inherit_id" ref="planning.planning_slot_view_kanban"/>
+    <field name="arch" type="xml">
+        <xpath expr="//t[@t-field='record.resource_id']" position="replace">
+            <t t-foreach= "record.multi_employee_ids.raw_value" t-as="employee">
+                <span class="badge badge-primary me-1" t-esc="employee.display_name"/>
+            </t>
+        </xpath>
+    </field>
+</record>
