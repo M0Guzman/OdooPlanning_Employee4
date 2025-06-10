@@ -10,6 +10,6 @@
                    placeholder="Assign Employees"/>
         </xpath>
 
-        <xpath expr="//field[@name='employee_skill_ids']" positio="remove"/>
+        <xpath expr="//field[@name='employee_skill_ids']" position="remove"/>
     </field>
 </record>
