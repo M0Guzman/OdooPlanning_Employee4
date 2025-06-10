@@ -10,7 +10,7 @@
     'views/planning_slot_form_views.xml',
     'views/planning_slot_list_views.xml',
     'views/planning_slot_kanban_views.xml',
-    'views/planning_slot_search_views.xml',
+    'views/planning_slot_template',
 ],
 
     'installable': True,
