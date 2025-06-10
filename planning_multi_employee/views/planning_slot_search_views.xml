@@ -4,17 +4,20 @@
     <field name="inherit_id" ref="planning.view_planning_slot_filter"/>
     <field name="arch" type="xml">
 
-        <!-- Supprimer les filtres existants invalides -->
+        <!-- Supprimer tous les usages du champ employee_skill_ids -->
         <xpath expr="//filter[@name='employee_skill_ids']" position="remove"/>
+        <xpath expr="//field[@name='employee_skill_ids']" position="remove"/>
+
+        <!-- Supprimer le filtre sur resource_id (ancien champ mono-ressource) -->
         <xpath expr="//filter[@name='resource_id']" position="remove"/>
 
-        <!-- Ajouter un filtre valide pour le champ multi_employee_ids -->
+        <!-- Ajouter un champ de recherche pour multi_employee_ids -->
         <xpath expr="//search" position="inside">
             <field name="multi_employee_ids"
                    string="Employés"
                    widget="many2many_tags"
                    options="{'no_create_edit': True}"
-                   placeholder="Assign Employees"/>
+                   placeholder="Rechercher un ou plusieurs employés"/>
         </xpath>
     </field>
 </record>
