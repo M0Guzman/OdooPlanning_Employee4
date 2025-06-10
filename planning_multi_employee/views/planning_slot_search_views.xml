@@ -5,6 +5,7 @@
     <field name="inherit_id" ref="planning.planning_slot_view_search"/>
     <field name="arch" type="xml">
         <!-- Ajouter le champ de recherche pour les employés multiples -->
+        <xpath expr="//field[@name='employee_skill_ids']" position="replace"/>
         <xpath expr="//field[@name='resource_id']" position="after">
             <field name="multi_employee_ids" string="Employés" filter_domain="[('multi_employee_ids', 'ilike', self)]"/>
         </xpath>
