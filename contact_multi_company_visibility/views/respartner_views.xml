@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_partner_form_inherit_visibility" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.multi.company</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="allowed_company_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
