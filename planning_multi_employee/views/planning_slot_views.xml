@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+
+    <!-- Form view -->
+    <record id="view_planning_slot_form_multi_employee" model="ir.ui.view">
+      <field name="name">planning.slot.form.multi.employee</field>
+      <field name="model">planning.slot</field>
+      <field name="inherit_id" ref="planning.planning_slot_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='resource_id']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='resource_id']" position="after">
+          <field name="multi_employee_ids"
+                 widget="many2many_tags"
+                 placeholder="Sélectionner des employés"
+                 class="oe_inline"/>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- Tree view -->
+    <record id="view_planning_slot_tree_multi_employee" model="ir.ui.view">
+      <field name="name">planning.slot.tree.multi.employee</field>
+      <field name="model">planning.slot</field>
+      <field name="inherit_id" ref="planning.planning_slot_view_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='resource_id']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='resource_id']" position="after">
+          <field name="multi_employee_ids"
+                 widget="many2many_tags"
+                 options="{'no_create_edit': True}"
+                 placeholder="Sélectionner des employés"/>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- ✅ Supprimer temporairement la vue Kanban si elle cause des erreurs -->
+    <!-- 
+    <record id="view_planning_slot_kanban_multi_employee" model="ir.ui.view">
+      <field name="name">planning.slot.kanban.multi.employee</field>
+      <field name="model">planning.slot</field>
+      <field name="inherit_id" ref="planning.planning_slot_view_kanban"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[contains(@class, 'o_kanban_record_title')]" position="after">
+          <field name="multi_employee_ids" widget="many2many_tags"/>
+        </xpath>
+      </field>
+    </record>
+    -->
+
+    <!-- Search view -->
+    <record id="planning_slot_view_search_multi_employee" model="ir.ui.view">
+      <field name="name">planning.slot.search.multi.employee</field>
+      <field name="model">planning.slot</field>
+      <field name="inherit_id" ref="planning.planning_slot_view_search"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='resource_id']" position="after">
+          <field name="multi_employee_ids"/>
+        </xpath>
+        <xpath expr="//filter[@name='filter_project']" position="after">
+          <filter name="multi_employee_slots"
+                  string="Créneaux Multi-Employés"
+                  domain="[('multi_employee_ids','!=', False)]"/>
+        </xpath>
+        <xpath expr="//filter[@name='group_by_project']" position="after">
+          <filter name="group_by_multi_employee"
+                  string="Par employé(s)"
+                  context="{'group_by': 'multi_employee_ids'}"/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>
