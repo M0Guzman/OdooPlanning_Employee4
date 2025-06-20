@@ -61,12 +61,13 @@
         <xpath expr="//field[@name='resource_id']" position="after">
           <field name="multi_employee_ids"/>
         </xpath>
-        <xpath expr="//filter[@name='filter_project']" position="after">
+          
+        <xpath expr="//search" position="inside">
           <filter name="multi_employee_slots"
                   string="Créneaux Multi-Employés"
                   domain="[('multi_employee_ids','!=', False)]"/>
         </xpath>
-        <xpath expr="//filter[@name='group_by_project']" position="after">
+        <xpath expr="//search" position="inside">
           <filter name="group_by_multi_employee"
                   string="Par employé(s)"
                   context="{'group_by': 'multi_employee_ids'}"/>
