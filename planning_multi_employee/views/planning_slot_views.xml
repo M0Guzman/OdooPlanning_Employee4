@@ -6,7 +6,7 @@
     <record id="view_planning_slot_form_multi_employee" model="ir.ui.view">
       <field name="name">planning.slot.form.multi.employee</field>
       <field name="model">planning.slot</field>
-      <field name="inherit_id" ref="planning.planning_slot_view_form"/>
+      <field name="inherit_id" ref="planning.planning_view_form"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='resource_id']" position="attributes">
           <attribute name="invisible">1</attribute>
@@ -24,7 +24,7 @@
     <record id="view_planning_slot_tree_multi_employee" model="ir.ui.view">
       <field name="name">planning.slot.tree.multi.employee</field>
       <field name="model">planning.slot</field>
-      <field name="inherit_id" ref="planning.planning_slot_view_tree"/>
+      <field name="inherit_id" ref="planning.planning_view_tree"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='resource_id']" position="attributes">
           <attribute name="invisible">1</attribute>
@@ -38,12 +38,12 @@
       </field>
     </record>
 
-    <!-- ✅ Supprimer temporairement la vue Kanban si elle cause des erreurs -->
+
     <!-- 
     <record id="view_planning_slot_kanban_multi_employee" model="ir.ui.view">
       <field name="name">planning.slot.kanban.multi.employee</field>
       <field name="model">planning.slot</field>
-      <field name="inherit_id" ref="planning.planning_slot_view_kanban"/>
+      <field name="inherit_id" ref="planning.planning_view_kanban"/>
       <field name="arch" type="xml">
         <xpath expr="//div[contains(@class, 'o_kanban_record_title')]" position="after">
           <field name="multi_employee_ids" widget="many2many_tags"/>
@@ -56,7 +56,7 @@
     <record id="planning_slot_view_search_multi_employee" model="ir.ui.view">
       <field name="name">planning.slot.search.multi.employee</field>
       <field name="model">planning.slot</field>
-      <field name="inherit_id" ref="planning.planning_slot_view_search"/>
+      <field name="inherit_id" ref="planning.planning_view_search"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='resource_id']" position="after">
           <field name="multi_employee_ids"/>
